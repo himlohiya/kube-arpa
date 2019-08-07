@@ -1,0 +1,136 @@
+FORMAT: 1A
+HOST: http://kube-arpa.apiblueprint.org/
+
+# kube-arpa
+
+kube-arpa is a simple API allowing consumers to view and monitor multiple kubernetes clusters.
+
+## Kubernetes Clusters Providers [/k8-providers]
+
+### List All Providers [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "name": "Azure AKS",
+                "alias": "azure_aks",
+                "created_at": "2015-08-05T08:40:51.620Z",
+                "updated_at": "2015-08-05T08:40:51.620Z"
+            },
+            {
+                "name": "Azure Custom",
+                "alias": "azure_custom",
+                "created_at": "2015-08-05T08:40:51.620Z",
+                "updated_at": "2015-08-05T08:40:51.620Z"
+            },
+            {
+                "name": "Aws EKS",
+                "alias": "aws_eks",
+                "created_at": "2015-08-05T08:40:51.620Z",
+                "updated_at": "2015-08-05T08:40:51.620Z"
+            },
+            {
+                "name": "Aws Custom",
+                "alias": "aws_custom",
+                "created_at": "2015-08-05T08:40:51.620Z",
+                "updated_at": "2015-08-05T08:40:51.620Z"
+            },
+            {
+                "name": "StackPoint",
+                "alias": "stackPoint",
+                "created_at": "2015-08-05T08:40:51.620Z",
+                "updated_at": "2015-08-05T08:40:51.620Z"
+            },
+            {
+                "name": "IBM Custom",
+                "alias": "ibm_custom",
+                "created_at": "2015-08-05T08:40:51.620Z",
+                "updated_at": "2015-08-05T08:40:51.620Z"
+            },
+            {
+                "name": "Google Cloud Platform Custom",
+                "alias": "gcp_custom",
+                "created_at": "2015-08-05T08:40:51.620Z",
+                "updated_at": "2015-08-05T08:40:51.620Z"
+            },
+            {
+                "name": "Custom Providers",
+                "alias": "custom",
+                "created_at": "2015-08-05T08:40:51.620Z",
+                "updated_at": "2015-08-05T08:40:51.620Z"
+            }
+        ]
+
+## Kubernetes Clusters [/kubernetes-clusters]
+
+### List All Clusters [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "cluster-name": "Cluster A",
+                "provider": {
+                    "name": "Aws EKS",
+                    "alias": "aws_eks"
+                },
+                "created_at": "2015-08-05T08:40:51.620Z",
+                "updated_at": "2015-08-05T08:40:51.620Z"
+            },
+            {
+                "cluster-name": "Cluster B",
+                "provider": {
+                    "name": "Aws EKS",
+                    "alias": "aws_eks"
+                },
+                "created_at": "2015-08-05T08:40:51.620Z",
+                "updated_at": "2015-08-05T08:40:51.620Z"
+            },
+            
+        ]
+
+### Create a New Cluster [POST]
+
+You may create your own cluster using this action. It takes a JSON
+object containing a provider and cluster details.
+
++ Request (application/json)
+
+        {
+            "provider": "Aws",
+            "cluster-name": "Cluster A"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /kubernetes-clusters/2
+
+    + Body
+
+            {
+                "cluster-name": "Cluster A",
+                "provider": {
+                    "name": "Aws EKS",
+                    "alias": "aws_eks"
+                },
+                "created_at": "2015-08-05T08:40:51.620Z",
+                "updated_at": "2015-08-05T08:40:51.620Z"
+            }
+            
+## Kubernetes Clusters Services [/k8-cluster-services]
+
+### List All Cluster Services [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "name": "Service A",
+                "cluster_name": "Cluster A",
+                "created_at": "2015-08-05T08:40:51.620Z",
+                "updated_at": "2015-08-05T08:40:51.620Z"
+            }
+        ]
