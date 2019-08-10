@@ -70,7 +70,7 @@ kube-arpa is a simple API allowing consumers to view and monitor multiple kubern
 
         [
             {
-                "cluster-name": "Cluster A",
+                "cluster_name": "Cluster A",
                 "provider": {
                     "name": "Aws EKS",
                     "alias": "aws_eks"
@@ -79,14 +79,14 @@ kube-arpa is a simple API allowing consumers to view and monitor multiple kubern
                 "updated_at": "2015-08-05T08:40:51.620Z"
             },
             {
-                "cluster-name": "Cluster B",
+                "cluster_name": "Cluster B",
                 "provider": {
                     "name": "Aws EKS",
                     "alias": "aws_eks"
                 },
                 "created_at": "2015-08-05T08:40:51.620Z",
                 "updated_at": "2015-08-05T08:40:51.620Z"
-            },
+            }
             
         ]
 
@@ -99,7 +99,7 @@ object containing a provider and cluster details.
 
         {
             "provider": "Aws",
-            "cluster-name": "Cluster A"
+            "cluster_name": "Cluster A"
         }
 
 + Response 201 (application/json)
@@ -111,7 +111,7 @@ object containing a provider and cluster details.
     + Body
 
             {
-                "cluster-name": "Cluster A",
+                "cluster_name": "Cluster A",
                 "provider": {
                     "name": "Aws EKS",
                     "alias": "aws_eks"
